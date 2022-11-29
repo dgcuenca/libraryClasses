@@ -25,8 +25,7 @@ function addBook() {
     let bookgenerator = '';
     listBooks.forEach((book) => {
       bookgenerator += `<div class="book-container">
-            <h2 class="book-title">${book.title}</h2>
-            <h3 class="book-author">${book.author}</h3>
+            <p class="book-title">"${book.title}" by ${book.author}</p>
             <button class="remove-book" id="${book.title}" onClick=removeBook(this)>Remove</button>
           </div>`;
     });
@@ -37,10 +36,9 @@ window.onload = () => {
   let bookgenerator = '';
   listBooks.forEach((book) => {
     bookgenerator += `<div class="book-container">
-    <h2 class="book-title">${book.title}</h2>
-    <h3 class="book-author">${book.author}</h3>
-    <button class="remove-book" id="${book.title}" onClick=removeBook(this)>Remove</button>
-  </div>`;
+            <p class="book-title">"${book.title}" by ${book.author}</p>
+            <button class="remove-book" id="${book.title}" onClick=removeBook(this)>Remove</button>
+          </div>`;
   });
   library.innerHTML = bookgenerator;
 };
