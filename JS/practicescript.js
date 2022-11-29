@@ -1,7 +1,11 @@
-const bookTitle = document.querySelector('#bookTitle');
-const bookAuthor = document.querySelector('#bookAuthor');
-const title = bookTitle.value;
-const author = bookAuthor.value;
+let bookTitle ='dummy';
+let bookAuthor='dummy';
+
+function getInformation (){
+     bookTitle = document.getElementById('bookTitle').value;
+     bookAuthor = document.getElementById('bookAuthor').value;
+     return (bookTitle,bookAuthor);
+}
 
 class Book {
     constructor(title, author){
@@ -46,7 +50,11 @@ class BookShelf {
 
 const shelf = new BookShelf()
 const addButton = document.querySelector('.add-button');
-addButton.addEventListener('click', shelf.addBook);
+addButton.addEventListener('click', ()=> {
+    console.log(getInformation());
+
+});
+
 //shelf.addBook(bookTitle.value, author.value)
 //console.log(shelf);
 //shelf.addBook(title, author);
