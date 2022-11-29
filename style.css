@@ -31,7 +31,6 @@ body {
   
   .book-container {
     display: flex;
-    flex-direction: column;
     gap: 12px;
     margin-left: 5px;
     border-style: solid;
