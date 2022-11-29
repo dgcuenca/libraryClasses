@@ -1,56 +1,78 @@
-// const addButton = document.querySelector('.form-button');
-// const bookTitle = document.querySelector('#book-title');
-// const bookAuthor = document.querySelector('#book-author');
-// const library = document.querySelector('.book-main-container');
-// const listBooks = JSON.parse(localStorage.getItem('listBooks')) || [];
+let bookTitle;
+let bookAuthor;
+const library = document.querySelector('.library');
+const bookList = JSON.parse(localStorage.getItem('bookList')) || [];
 
-// function addBook() {
-//   const title = bookTitle.value;
-//   const author = bookAuthor.value;
-//   if (!title || !author) {
-//     alert('please fill all information');
-//   } else {
-//     const book = {
-//       title,
-//       author,
-//       //   id: id,
-//     };
-//     if (JSON.parse(localStorage.getItem('listBooks')) == null) {
-//       listBooks.push(book);
-//       localStorage.setItem('listBooks', JSON.stringify(listBooks));
-//     } else {
-//       listBooks.push(book);
-//       localStorage.setItem('listBooks', JSON.stringify(listBooks));
-//     }
-//     let bookgenerator = '';
-//     listBooks.forEach((book) => {
-//       bookgenerator += `<div class="book-container">
-//             <p class="book-title">"${book.title}" by ${book.author}</p>
-//             <button class="remove-book" id="${book.title}" onClick=removeBook(this)>Remove</button>
-//           </div>`;
-//     });
-//     library.innerHTML = bookgenerator;
-//   }
-// }
-// window.onload = () => {
-//   let bookgenerator = '';
-//   listBooks.forEach((book) => {
-//     bookgenerator += `<div class="book-container">
-//             <p class="book-title">"${book.title}" by ${book.author}</p>
-//             <button class="remove-book" id="${book.title}" onClick=removeBook(this)>Remove</button>
-//           </div>`;
-//   });
-//   library.innerHTML = bookgenerator;
-// };
+function getInformation() {
+  bookTitle = document.getElementById('bookTitle').value;
+  bookAuthor = document.getElementById('bookAuthor').value;
+}
 
-// function removeBook(title) {
-//   const resultBooks = listBooks.filter((book) => book.title !== title.id);
-//   localStorage.setItem('listBooks', JSON.stringify(resultBooks));
-//   window.location.reload();
-// }
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
+}
 
-// addButton.addEventListener('click', addBook);
-// const x = 0;
-// if (x === 1) {
-//   removeBook();
-// }
+class BookShelf {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  addBook(title, author) {
+    const newBook = new Book(title, author);
+    bookList.push(newBook);
+    localStorage.setItem('bookList', JSON.stringify(bookList));
+    this.get();
+  }
+
+  deleteBook(title) {
+    const resultBooks = bookList.filter((book) => book.title !== title);
+    localStorage.setItem('bookList', JSON.stringify(resultBooks));
+    window.location.reload();
+  }
+
+  get() {
+    let bookgenerator = '';
+    bookList.forEach((book) => {
+      bookgenerator += `<div class="book-container">
+             <p class="book-title">"${book.title}" by ${book.author}</p>
+             <button class="remove-book" id="${book.title}" onClick=giveInformation(this)>Remove</button>
+           </div>`;
+    });
+    library.innerHTML = bookgenerator;
+  }
+}
+
+const shelf = new BookShelf();
+const addButton = document.querySelector('.add-button');
+const deleteButton = document.querySelector('.remove-book');
+addButton.addEventListener('click', () => {
+  getInformation();
+  shelf.addBook(bookTitle, bookAuthor);
+});
+function giveInformation(id) {
+  const index = id.id;
+  shelf.deleteBook(index);
+}
+window.onload = () => {
+  let bookgenerator = '';
+  bookList.forEach((book) => {
+    bookgenerator += `<div class="book-container">
+                 <p class="book-title">"${book.title}" by ${book.author}</p>
+                 <button class="remove-book" id="${book.title}" onClick=giveInformation(this)>Remove</button>
+              </div>`;
+  });
+  library.innerHTML = bookgenerator;
+};
+
+const x = 0;
+if (x === 1) {
+  giveInformation();
+  deleteButton();
+}
+
+/* eslint-disable max-classes-per-file */
