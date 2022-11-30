@@ -5,19 +5,19 @@ const mainScreen = document.querySelector('#main-screen');
 const bookListScreen = document.querySelector('.noShow');
 const contactSection = document.querySelector('#contact-section');
 
-function displayBookList(){
+function displayBookList() {
   bookListScreen.style.display = 'block';
   mainScreen.style.display = 'none';
   contactSection.style.display = 'none';
 }
 
-function displayAddBook(){
+function displayAddBook() {
   mainScreen.style.display = 'block';
   bookListScreen.style.display = 'none';
   contactSection.style.display = 'none';
 }
 
-function displayContact(){
+function displayContact() {
   mainScreen.style.display = 'none';
   bookListScreen.style.display = 'none';
   contactSection.style.display = 'block';
