@@ -11,28 +11,28 @@ function getInformation() {
 }
 
 class Book {
-  constructor(title, author) {
+  constructor(title, author, id) {
     this.title = title;
     this.author = author;
+    this.id = id;
   }
 }
 
 class BookShelf {
   constructor() {
-    this.head = null;
-    this.tail = null;
     this.length = 0;
   }
 
-  addBook(title, author) {
-    const newBook = new Book(title, author);
+  addBook(title, author, id) {
+    const newBook = new Book(title, author, id);
     bookList.push(newBook);
     localStorage.setItem('bookList', JSON.stringify(bookList));
     this.get();
   }
 
-  deleteBook(title) {
-    const resultBooks = bookList.filter((book) => book.title !== title);
+  deleteBook(id) {
+    const resultBooks = bookList.filter((book) => book.id !== id);
+    console.log(resultBooks);
     localStorage.setItem('bookList', JSON.stringify(resultBooks));
     window.location.reload();
   }
@@ -42,7 +42,7 @@ class BookShelf {
     bookList.forEach((book) => {
       bookgenerator += `<div class="book-container">
              <p class="book-title">"${book.title}" by ${book.author}</p>
-             <button class="remove-book" id="${book.title}" onClick=giveInformation(this)>Remove</button>
+             <button class="remove-book" id="${book.id}" onClick=giveInformation(this)>Remove</button>
            </div>`;
     });
     library.innerHTML = bookgenerator;
@@ -51,10 +51,12 @@ class BookShelf {
 
 const shelf = new BookShelf();
 const addButton = document.querySelector('.add-button');
-const deleteButton = document.querySelector('.remove-book');
 addButton.addEventListener('click', () => {
   getInformation();
-  shelf.addBook(bookTitle, bookAuthor);
+  let bookId = Math.random() *100000;
+  let id = Math.trunc(bookId);
+  let idstring = id.toString();
+  shelf.addBook(bookTitle, bookAuthor,idstring);
 });
 function giveInformation(id) {
   const index = id.id;
@@ -65,7 +67,7 @@ window.onload = () => {
   bookList.forEach((book) => {
     bookgenerator += `<div class="book-container">
                  <p class="book-title">"${book.title}" by ${book.author}</p>
-                 <button class="remove-book" id="${book.title}" onClick=giveInformation(this)>Remove</button>
+                 <button class="remove-book" id="${book.id}" onClick=giveInformation(this)>Remove</button>
               </div>`;
   });
   library.innerHTML = bookgenerator;
@@ -74,5 +76,4 @@ window.onload = () => {
 const x = 0;
 if (x === 1) {
   giveInformation();
-  deleteButton();
 }
