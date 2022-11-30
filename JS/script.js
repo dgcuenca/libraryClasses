@@ -32,7 +32,6 @@ class BookShelf {
 
   deleteBook(id) {
     const resultBooks = bookList.filter((book) => book.id !== id);
-    console.log(resultBooks);
     localStorage.setItem('bookList', JSON.stringify(resultBooks));
     window.location.reload();
   }
@@ -53,10 +52,10 @@ const shelf = new BookShelf();
 const addButton = document.querySelector('.add-button');
 addButton.addEventListener('click', () => {
   getInformation();
-  let bookId = Math.random() *100000;
-  let id = Math.trunc(bookId);
-  let idstring = id.toString();
-  shelf.addBook(bookTitle, bookAuthor,idstring);
+  const bookId = Math.random() * 100000;
+  const id = Math.trunc(bookId);
+  const idstring = id.toString();
+  shelf.addBook(bookTitle, bookAuthor, idstring);
 });
 function giveInformation(id) {
   const index = id.id;
