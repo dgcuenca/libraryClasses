@@ -16,7 +16,7 @@ body {
   align-items: center;
 }
 
-.form-container {
+#form-container {
   display: flex;
   flex-direction: column;
   gap: 12px;
