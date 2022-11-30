@@ -1,3 +1,5 @@
+/* eslint-disable max-classes-per-file */
+/* eslint-disable class-methods-use-this */
 let bookTitle;
 let bookAuthor;
 const library = document.querySelector('.library');
@@ -74,5 +76,3 @@ if (x === 1) {
   giveInformation();
   deleteButton();
 }
-
-/* eslint-disable max-classes-per-file */
