@@ -21,9 +21,6 @@
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
   - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
@@ -47,7 +44,7 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://getbootstrap.com/docs/5.2/getting-started/introduction/">Bootstrap</a></li>
+    <li><a href="https://html.spec.whatwg.org/multipage/">HTML</a></li>
     <li><a href="https://www.w3.org/Style/CSS/Overview.en.html">CSS</a></li>
     <li><a href="https://www.javascript.com/">JavaScript</a></li>
   </ul>
@@ -80,14 +77,15 @@
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> This project can be used as an example on how objects and list can be used
+> This project can be used as an example on how objects and list can be used with classes
 
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
 In order to run this project you need:
-Visual Studio
+
+- Visual Studio
 
 ### Setup
 
