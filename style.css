@@ -5,6 +5,10 @@ body {
   font-family: 'Playfair Display', sans-serif;
 }
 
+.show {
+  display: block !important;
+}
+
 .nav-bar{
   position: fixed;
   top: 0;
@@ -41,6 +45,14 @@ a:hover {
 a:active {
   opacity: 0.7;
 }
+
+.noShow {
+  margin-top: 80px;
+  color: #fff;
+  font-size: 10px;
+  display: none;
+}
+
 .page-title {
   color: #fff;
   text-align: center;

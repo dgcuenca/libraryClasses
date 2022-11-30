@@ -1,9 +1,10 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable class-methods-use-this */
+
 let bookTitle;
 let bookAuthor;
 const library = document.querySelector('.library');
-const bookList = JSON.parse(localStorage.getItem('bookList')) || [];
+let bookList = JSON.parse(localStorage.getItem('bookList')) || [];
 
 function getInformation() {
   bookTitle = document.getElementById('bookTitle').value;
@@ -32,9 +33,17 @@ class BookShelf {
 
   deleteBook(id) {
     const resultBooks = bookList.filter((book) => book.id !== id);
-    console.log(resultBooks);
-    localStorage.setItem('bookList', JSON.stringify(resultBooks));
-    window.location.reload();
+    bookList = resultBooks; 
+    localStorage.setItem('bookList', JSON.stringify(bookList));
+    let bookgenerator = '';
+    bookList.forEach((book) => {
+      bookgenerator += `<div class="book-container">
+             <p class="book-title">"${book.title}" by ${book.author}</p>
+             <button class="remove-book" id="${book.id}" onClick=giveInformation(this)>Remove</button>
+           </div>`;
+    });
+    library.innerHTML = bookgenerator;
+    // window.location.reload();
   }
 
   get() {
